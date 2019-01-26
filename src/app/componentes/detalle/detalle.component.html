@@ -1,0 +1,33 @@
+<h3>Modificar Película</h3>
+<form (ngSubmit)="guardarCambios()" #peliculaForm="ngForm">
+	<div class="row">
+		<div class="form-group col-4">
+			<label>Titulo:</label>
+			<input type="text" class="form-control" name="titulo" [(ngModel)]="pelicula.titulo" required #spy #titulo="ngModel">
+			{{spy.className}}
+		</div>
+		<div [hidden]="titulo.valid || titulo.pristine" class="alert alert-danger col-2">
+			El título es obligatorio
+		</div>
+		<div class="form-group col-4">
+			<label>Género:</label>
+			<input type="text" class="form-control" name="genero" [(ngModel)]="pelicula.genero">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-4">
+			<label>Director:</label>
+			<input type="text" class="form-control" name="director" [(ngModel)]="pelicula.director">
+		</div>
+	</div>
+	<div class="row buttons">
+		<button class="btn btn-primary mr-20" type="submit" [disabled]="!peliculaForm.form.valid">Aceptar</button>
+		<button class="btn btn-danger" (click)="cancelarEdicion()">Cancelar</button>
+	</div>
+</form>
+
+<!--
+() => eventos => desde el template hacia la clase
+[] => propiedades => desde la clase hacia el template
+[()] => bidireccional
+-->
