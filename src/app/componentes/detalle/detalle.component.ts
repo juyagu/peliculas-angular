@@ -11,7 +11,7 @@ import { PeliculasService } from './../../servicios/peliculas.service';
 export class DetalleComponent implements OnInit {
   
   @Input()
-  id_pelicula : number;
+  id : number;
   
   pelicula:Pelicula;
   
@@ -21,7 +21,7 @@ export class DetalleComponent implements OnInit {
   constructor(private svcPelicula:PeliculasService) { }
 
   ngOnInit() {
-	  this.buscarPelicula(this.id_pelicula);
+	  this.buscarPelicula(this.id);
   }
   
   cancelarEdicion(){
@@ -29,13 +29,16 @@ export class DetalleComponent implements OnInit {
   }
   
   guardarCambios(){
-	  console.log("Datos a enviar:");
-	  console.log(this.pelicula);
+	  //console.log("Datos a enviar:");
+    //console.log(this.pelicula);
+    this.svcPelicula.modificarPelicula(this.pelicula)
+      .subscribe(data => console.log(data));
   }
   
   buscarPelicula(id){
 	  this.svcPelicula.buscarPelicula(id)
 		.subscribe(data => {
+      console.log(data);
 			this.pelicula = data;
 		});
   }

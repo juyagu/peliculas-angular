@@ -1,5 +1,5 @@
 export interface Pelicula {
-  id_pelicula:number;
+  id:number;
   titulo:string;
   director:string;
   genero:string;
