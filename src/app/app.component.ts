@@ -11,6 +11,6 @@ export class AppComponent implements OnInit {
   //localStorage.setItem('currentUser', token);
 
   ngOnInit(){
-    localStorage.setItem('currentUser','usuario');
+    localStorage.setItem('currentUser','administrador');
   }
 }

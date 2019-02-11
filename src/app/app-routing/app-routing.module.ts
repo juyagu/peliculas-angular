@@ -12,7 +12,7 @@ const routes: Routes=[
   {path:'', redirectTo: 'home',pathMatch:'full'},
   {path:'home',component: ListadoComponent},
   {path:'detalle/:id',component:DetalleComponent, canActivate: [AuthGuard]},
-  {path:'nueva',component:NuevaComponent, canActivate: [AuthGuard]}
+  {path:'nueva',component:DetalleComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({

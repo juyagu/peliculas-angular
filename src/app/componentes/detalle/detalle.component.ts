@@ -18,6 +18,7 @@ export class DetalleComponent implements OnInit {
   
   id:number;
   pelicula:Pelicula;
+  nuevaPelicula:boolean = false;
   
   /*@Output()
   cancelar = new EventEmitter();*/
@@ -31,7 +32,12 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit() {
     //let id = this.route.snapshot.paramMap.get('id');
-	  this.buscarPelicula(this.id);
+	 if(typeof this.id !== 'undefined'){
+		this.buscarPelicula(this.id); 
+	 }else{
+		 this.nuevaPelicula = true;
+		 this.pelicula = {id:0,titulo:'',director:'',genero:'',foto:''}
+	 }
   }
   
   cancelarEdicion(){

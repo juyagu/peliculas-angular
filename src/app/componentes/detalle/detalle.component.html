@@ -24,7 +24,7 @@
     <div class="row buttons">
       <button class="btn btn-primary mr-20" type="submit" [disabled]="!peliculaForm.form.valid">Aceptar</button>
       <button class="btn btn-info mr-20" (click)="cancelarEdicion()">Cancelar</button>
-      <button class="btn btn-danger" (click)="eliminarPelicula(pelicula.id)">Eliminar <i class="fas fa-trash-alt"></i></button>
+      <button class="btn btn-danger" *ngIf="nuevaPelicula" (click)="eliminarPelicula(pelicula.id)">Eliminar <i class="fas fa-trash-alt"></i></button>
     </div>
   </form>
 </div>
