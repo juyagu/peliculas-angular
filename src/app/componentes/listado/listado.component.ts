@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Pelicula } from './../../entities/pelicula';
-
+import { Subscription } from 'rxjs';
 import { PeliculasService } from './../../servicios/peliculas.service';
+import { MensajeService } from './../../servicios/mensaje.service';
+import { Router } from '@angular/router';
+
 
 /*const PELICULAS: Pelicula[] = [
   {id_pelicula:1, titulo: 'El club de los malditos',genero:'comedia/accion',director:'Nicanor Loreti',foto:'assets/img/malditos.jpg'},
@@ -19,18 +22,27 @@ export class ListadoComponent implements OnInit {
   //peliculas:Pelicula[] = PELICULAS;
   peliculas:Pelicula[];
   peliculaSeleccionada:number;
-  constructor(private svcPelicula:PeliculasService) { }
+  mensaje:string;
+  constructor(private svcPelicula:PeliculasService,private svcMensaje:MensajeService,private router:Router) { 
+    
+  }
 
   ngOnInit() {
+    this.svcMensaje.getMensaje().subscribe(mensaje => this.mensaje = mensaje);
 	  this.obtenerListado();
   }
 
+  ngOnDestroy(){
+    this.svcMensaje.limpiarMensaje();
+  }
+
   editarPelicula(id:number){
-    this.peliculaSeleccionada = id;
+    //this.peliculaSeleccionada = id;
+    this.router.navigate(['/detalle/' + id]);
   }
   
   cancelarEdicion(estado){
-	  this.peliculaSeleccionada = estado;
+    this.peliculaSeleccionada = estado;
   }
   
   obtenerListado(){

@@ -9,18 +9,26 @@ import { ReactivoComponent } from './componentes/reactivo/reactivo.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { DetalleComponent } from './componentes/detalle/detalle.component';
 
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { NuevaComponent } from './nueva/nueva.component';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ReactivoComponent,
     ListadoComponent,
-    DetalleComponent
+    DetalleComponent,
+    NuevaComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
