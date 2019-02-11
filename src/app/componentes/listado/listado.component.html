@@ -1,4 +1,7 @@
-<table class="table table-bordered table-hover" [hidden]="peliculaSeleccionada">
+<div *ngIf="mensaje" class="alert alert-success" role="alert">
+  {{mensaje}}
+</div>
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Id</th>
@@ -19,6 +22,6 @@
   </tbody>
 </table>
 
-<div *ngIf="peliculaSeleccionada">
+<!--<div *ngIf="peliculaSeleccionada">
 	<app-detalle [id]="peliculaSeleccionada" (cancelar)="cancelarEdicion($event)"></app-detalle>
-</div>
+</div>-->

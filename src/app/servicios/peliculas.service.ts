@@ -9,6 +9,9 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 /* ------------ FIN ------------ */
 
+import { environment } from './../../environments/environment';
+//import { url } from 'inspector';
+
 
 /* Declaración httpOptions*/
 const httpOptions = {
@@ -22,7 +25,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PeliculasService {
-
+  url:string = environment.url;
   constructor(private http:HttpClient) { }
 
   /*getPeliculas(): Observable<Pelicula[]>{
@@ -33,7 +36,8 @@ export class PeliculasService {
   }*/
 
   getPeliculas(): Observable<Pelicula[]>{
-    return this.http.get<Pelicula[]>("http://localhost:3001/angular5/peliculas");
+    //return this.http.get<Pelicula[]>("http://localhost:3001/angular5/peliculas");
+    return this.http.get<Pelicula[]>(this.url);
   }
   
   /*buscarPelicula(id:number) : Observable<Pelicula>{
@@ -44,14 +48,14 @@ export class PeliculasService {
 	  })
   }*/
   buscarPelicula(id:number): Observable<Pelicula>{
-    return this.http.get<Pelicula>("http://localhost:3001/angular5/peliculas/"+ id)
+    return this.http.get<Pelicula>(this.url + id)
       .pipe(
         catchError(this.handleError)
       );
   }
 
   modificarPelicula(pelicula:Pelicula):Observable<any>{
-    return this.http.put<any>("localhost:3001/angular5/peliculas/" + pelicula.id,pelicula,httpOptions)
+    return this.http.put<any>(this.url  + pelicula.id,pelicula,httpOptions)
       .pipe(
         catchError(this.handleError)
       );
