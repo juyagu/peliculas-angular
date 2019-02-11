@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover" [hidden]="peliculaSeleccionada">
+<table class="table table-bordered table-hover" [hidden]="peliculaSeleccionada && peliculaSeleccionada > 0">
   <thead>
     <tr>
       <th>Id</th>
@@ -20,5 +20,5 @@
 </table>
 
 <div *ngIf="peliculaSeleccionada">
-	<app-detalle [id]="peliculaSeleccionada" (cancelar)="cancelarEdicion($event)"></app-detalle>
+	<app-detalle [id]="peliculaSeleccionada" (cancelar)="cancelarEdicion($event)" (guardar)="guardarPelicula($event)"></app-detalle>
 </div>

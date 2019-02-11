@@ -42,6 +42,11 @@ export class ListadoComponent implements OnInit {
 		})
   }
 
+  guardarPelicula(guardar){
+    this.obtenerListado();
+    this.peliculaSeleccionada = 0;
+  }
+
 }
 
 

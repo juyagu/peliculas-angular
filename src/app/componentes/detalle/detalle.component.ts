@@ -17,6 +17,9 @@ export class DetalleComponent implements OnInit {
   
   @Output()
   cancelar = new EventEmitter();
+
+  @Output()
+  guardar = new EventEmitter();
   
   constructor(private svcPelicula:PeliculasService) { }
 
@@ -32,7 +35,10 @@ export class DetalleComponent implements OnInit {
 	  //console.log("Datos a enviar:");
     //console.log(this.pelicula);
     this.svcPelicula.modificarPelicula(this.pelicula)
-      .subscribe(data => console.log(data));
+      .subscribe(data => {
+        console.log(data);
+        this.guardar.emit(true);
+      });
   }
   
   buscarPelicula(id){
@@ -41,6 +47,13 @@ export class DetalleComponent implements OnInit {
       console.log(data);
 			this.pelicula = data;
 		});
+  }
+
+  eliminarPelicula(id:number){
+    this.svcPelicula.eliminarPelicula(id)
+      .subscribe(data => {
+        this.guardar.emit(true);
+      })
   }
 
 }

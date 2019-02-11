@@ -51,10 +51,17 @@ export class PeliculasService {
   }
 
   modificarPelicula(pelicula:Pelicula):Observable<any>{
-    return this.http.put<any>("localhost:3001/angular5/peliculas/" + pelicula.id,pelicula,httpOptions)
+    return this.http.put<any>("http://localhost:3001/angular5/peliculas/" + pelicula.id,pelicula,httpOptions)
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  eliminarPelicula(id:number):Observable<any>{
+    return this.http.delete<any>(`http://localhost:3001/angular5/peliculas/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      )
   }
 
 
