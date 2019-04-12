@@ -57,6 +57,13 @@ export class PeliculasService {
       );
   }
 
+  eliminarPelicula(id:number):Observable<any>{
+    return this.http.delete<any>(`http://localhost:3001/angular5/peliculas/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
 
   private handleError(error: HttpErrorResponse){
     if(error.error instanceof ErrorEvent){
