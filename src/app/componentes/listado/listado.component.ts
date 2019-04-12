@@ -19,6 +19,7 @@ export class ListadoComponent implements OnInit {
   //peliculas:Pelicula[] = PELICULAS;
   peliculas:Pelicula[];
   peliculaSeleccionada:number;
+  modificacionPelicula:boolean;
   constructor(private svcPelicula:PeliculasService) { }
 
   ngOnInit() {
@@ -26,10 +27,12 @@ export class ListadoComponent implements OnInit {
   }
 
   editarPelicula(id:number){
+    this.modificacionPelicula = false;
     this.peliculaSeleccionada = id;
   }
   
   cancelarEdicion(estado){
+    this.obtenerListado();
 	  this.peliculaSeleccionada = estado;
   }
   
@@ -40,6 +43,14 @@ export class ListadoComponent implements OnInit {
 			console.log(data);
 			this.peliculas = data;
 		})
+  }
+
+  peliculaGuardada(modificacion){
+    if(modificacion){
+      this.modificacionPelicula=modificacion;
+      this.peliculaSeleccionada = 0;
+      this.obtenerListado();
+    }
   }
 
 }

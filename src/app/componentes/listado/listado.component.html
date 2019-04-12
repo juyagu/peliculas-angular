@@ -1,3 +1,6 @@
+<div class="alert alert-success" role="alert" [hidden]="!modificacionPelicula">
+  La pelicula fue modificada correctamente
+</div>
 <table class="table table-bordered table-hover" [hidden]="peliculaSeleccionada">
   <thead>
     <tr>
@@ -19,6 +22,6 @@
   </tbody>
 </table>
 
-<div *ngIf="peliculaSeleccionada">
-	<app-detalle [id]="peliculaSeleccionada" (cancelar)="cancelarEdicion($event)"></app-detalle>
+<div *ngIf="peliculaSeleccionada && peliculaSeleccionada > 0">
+	<app-detalle [id]="peliculaSeleccionada" (cancelar)="cancelarEdicion($event)" (guardar)="peliculaGuardada($event)"></app-detalle>
 </div>
