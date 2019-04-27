@@ -13,9 +13,39 @@
       <label for="">Email:</label>
       <input type="text" class="form-control" formControlName="email">
     </div>
+    <!--<div *ngIf="registroForm.get('email').errors && registroForm.get('email').dirty">-->
+        <div *ngIf="!registroForm.valid && registroForm.touched">
+      <div class="row">
+        <div *ngIf="registroForm.get('email').errors && registroForm.get('email').dirty" class="alert alert-danger" role="alert">
+          El email ingresado no es válido
+        </div>
+        <div *ngIf="registroForm.get('nombre').dirty && registroForm.get('nombre').touched">
+          <div *ngIf="registroForm.get('nombre').hasError('required')" class="alert alert-danger" role="alert">
+              Debe ingresar un nombre
+          </div>
+          <div *ngIf="registroForm.get('nombre').hasError('minlength')" class="alert alert-danger" role="alert">
+              El nombre debe contener al menos 5 letras
+          </div>
+          <div *ngIf="registroForm.get('nombre').hasError('maxlength')" class="alert alert-danger" role="alert">
+              El nombre no debe contener mas de 30 letras
+          </div>
+        </div>
+        <div *ngIf="registroForm.get('apellido').dirty && registroForm.get('apellido').touched">
+          <div *ngIf="registroForm.get('apellido').hasError('required')" class="alert alert-danger" role="alert">
+              Debe ingresar un apellido
+          </div>
+          <div *ngIf="registroForm.get('apellido').hasError('minlength')" class="alert alert-danger" role="alert">
+              El apellido debe contener al menos 5 letras
+          </div>
+          <div *ngIf="registroForm.get('apellido').hasError('maxlength')" class="alert alert-danger" role="alert">
+              El apellido no debe contener mas de 30 letras
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <hr>
-  <button class="btn btn-primary" type="submit">Enviar</button>
+  <button class="btn btn-primary" type="submit" [disabled]="registroForm.invalid">Enviar</button>
 </form>
 <pre>{{registroForm.value | json}}</pre>
 <p>Validez del formulario: {{registroForm.valid}}</p>
