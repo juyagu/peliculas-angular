@@ -24,4 +24,8 @@ export class ReactivoComponent implements OnInit {
   formularioEnviado(){
     console.log(this.registroForm.value);
   }
+
+  captureErrors(errors){
+    console.log(errors);
+  }
 }
