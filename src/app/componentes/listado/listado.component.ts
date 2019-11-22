@@ -18,14 +18,14 @@ export class ListadoComponent implements OnInit {
 
   peliculas:Pelicula[] = PELICULAS;
   //peliculas:Pelicula[];
-  peliculaSeleccionada:number;
+  peliculaSeleccionada:Pelicula;
   constructor() { }
 
   ngOnInit() {
   }
 
-  editarPelicula(id:number){
-    this.peliculaSeleccionada = id;
+  editarPelicula(pelicula:Pelicula){
+    this.peliculaSeleccionada = pelicula;
   }
   
   cancelarEdicion(estado){

@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pelicula of peliculas" (click)="editarPelicula(pelicula.id_pelicula)">
+    <tr *ngFor="let pelicula of peliculas" (click)="editarPelicula(pelicula)">
       <td>{{pelicula.id_pelicula}}</td>
       <td>{{pelicula.titulo}}</td>
       <td>{{pelicula.genero}}</td>
@@ -20,5 +20,5 @@
 </table>
 
 <div *ngIf="peliculaSeleccionada">
-	<app-detalle [id_pelicula]="peliculaSeleccionada" (cancelar)="cancelarEdicion($event)"></app-detalle>
+	<app-detalle [pelicula]="peliculaSeleccionada" (cancelar)="cancelarEdicion($event)"></app-detalle>
 </div>
