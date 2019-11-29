@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pelicula } from './../../entities/pelicula';
 
-//import { PeliculasService } from './../../servicios/peliculas.service';
 
 const PELICULAS: Pelicula[] = [
   {id_pelicula:1, titulo: 'El club de los malditos',genero:'comedia/accion',director:'Nicanor Loreti',foto:'assets/img/malditos.jpg'},
@@ -17,7 +16,7 @@ const PELICULAS: Pelicula[] = [
 export class ListadoComponent implements OnInit {
 
   peliculas:Pelicula[] = PELICULAS;
-  //peliculas:Pelicula[];
+
   peliculaSeleccionada:Pelicula;
   constructor() { }
 
