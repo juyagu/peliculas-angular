@@ -6,14 +6,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ReactivoComponent } from './componentes/reactivo/reactivo.component';
 import { ListadoComponent } from './componentes/listado/listado.component';
-import { DetalleComponent } from './componentes/detalle/detalle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReactivoComponent,
-    ListadoComponent,
-    DetalleComponent
+    ListadoComponent
   ],
   imports: [
     BrowserModule,
